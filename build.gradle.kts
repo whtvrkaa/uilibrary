@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose) // ✅ Add this for Compose Compiler
 }
 
 android {
@@ -33,15 +32,24 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
+    }
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.tooling)
     implementation(libs.material)
-    implementation(libs.androidx.compose.compiler) // ✅ Required Compose Compiler
-
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.compose.activity)
+    implementation(libs.androidx.compose.layout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }
+
